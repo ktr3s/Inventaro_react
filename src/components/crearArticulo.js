@@ -3,37 +3,37 @@ import ArticuloServices from '../services/ArticuloServices';
 
 class CreateArticulo extends Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
-            idArticulo: '',
+            // idArticulo:'',
             nombreArticulo: '',
             cantidadArticulo: '',
             precioArticulo: '',
-            pesoArticulo: '',
+            pesoArticulo: ''
+            
         };
-
-        this.changeIdArticuloHandler = this.changeIdArticuloHandler.bind(this);
+        // this.changeIdArticuloHandler=this.changeIdArticuloHandler.bind(this);
         this.changeNombreArticuloHandler = this.changeNombreArticuloHandler.bind(this);
         this.changeCantidadArticuloHandler = this.changeCantidadArticuloHandler.bind(this);
-        this.changePrecioArticuloHandler = this.changePrecioArticuloHandler.bind(this);
-        this.changePesoArticuloHandler = this.changePesoArticuloHandler.bind(this);
-
+         this.changePrecioArticuloHandler = this.changePrecioArticuloHandler.bind(this);
+         this.changePesoArticuloHandler = this.changePesoArticuloHandler.bind(this);
+         this.saveArticulos = this.saveArticulos.bind(this);
     }
 
     saveArticulos = (e) => {
         e.preventDefault();
-        let Articulos = { idArticulo: this.state.idArticulo, nombreArticulo: this.state.nombreArticulo, cantidadArticulo: this.state.cantidadArticulo, precioArticulo: this.state.precioArticulo, pesoArticulo: this.state.pesoArticulo };
+        let Articulos = { nombreArticulo: this.state.nombreArticulo, cantidadArticulo: this.state.cantidadArticulo, precioArticulo: this.state.precioArticulo, pesoArticulo: this.state.pesoArticulo };
         console.log('Articulos => ' + JSON.stringify(Articulos));
 
         ArticuloServices.createArticulos(Articulos).then(res => {
-            this.props.history.push('/Articulos');
+            this.props.history.push('/listar-articulos');
         });
     }
 
-    changeIdArticuloHandler = (event) => {
-        this.setState({ idArticulo: event.target.value });
-    }
+    // changeIdArticuloHandler = (event) => {
+    //     this.setState({ idArticulo: event.target.value });
+    // }
 
     changeNombreArticuloHandler = (event) => {
         this.setState({ nombreArticulo: event.target.value });
@@ -43,7 +43,7 @@ class CreateArticulo extends Component {
         this.setState({ cantidadArticulo: event.target.value });
     }
 
-    changePrecioArticuloVencidosHandler = (event) => {
+    changePrecioArticuloHandler = (event) => {
         this.setState({ precioArticulo: event.target.value });
     }
 
@@ -65,14 +65,14 @@ class CreateArticulo extends Component {
                             <h3 className="text-center">Agregar un Articulo</h3>
                             <div className="card-body">
                                 <form>
-                                    <div className="form-group">
+                                    {/* <div className="form-group">
                                         <label>Id Articulo:</label>
                                         <input placeholder="Id Articulo" name="idArticulo" className="form-control"
                                             value={this.state.idArticulo} onChange={this.changeIdArticuloHandler} />
-                                    </div>
+                                    </div> */}
                                     <div className="form-group">
                                         <label>Nombre del Articulo:</label>
-                                        <input placeholder="Nombre del Articulo" name="nombreArticulo" className="form-control"
+                                        <input type="text" placeholder="Nombre del Articulo" name="nombreArticulo" className="form-control"
                                             value={this.state.nombreArticulo} onChange={this.changeNombreArticuloHandler} />
                                     </div>
                                     <div className="form-group">
@@ -90,10 +90,11 @@ class CreateArticulo extends Component {
                                         <input placeholder="Peso" name="pesoArticulo" className="form-control"
                                             value={this.state.pesoArticulo} onChange={this.changePesoArticuloHandler} />
                                     </div>
-                                    
-
+                                    <br/>
+                                    <div class="container mx-auto">
                                     <button className="btn btn-success" onClick={this.saveArticulos}>Guardar</button>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>Cancelar</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
