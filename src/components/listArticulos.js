@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ArticuloServices from '../services/ArticuloServices';
+import axios from 'axios';
 
 class ListArticulos extends Component {
     constructor(props) {
@@ -23,6 +24,13 @@ class ListArticulos extends Component {
         });
     }
 
+    eliminarArticulo = async (idArticulo) => {
+        var opcion = window.confirm("El articulo se eliminara. ¿Desea continuar?");
+        if (opcion == true) {
+            await axios.delete('http://localhost:9000/api/borrar_articulo/' + idArticulo);
+            window.location.href = '/listar-articulos';
+        }
+    }
     addArticulo() {
         this.props.history.push("/crear-articulo");
     }
@@ -31,7 +39,7 @@ class ListArticulos extends Component {
         return (
             <div>
                 <h2 className="text-center">Lista de Articulos</h2>
-                <div className="row-3">
+                <div className="row">
                     <button className="btn btn-primary" onClick={this.addArticulo}><i class="fas fa-plus"></i> Crear un nuevo articulo</button>
                 </div>
                 <div className="row table-responsive">
@@ -51,7 +59,7 @@ class ListArticulos extends Component {
                             {
                                 this.state.articulo.map(
                                     articulo =>
-                                        <tr key={articulo.id}>
+                                        <tr key={articulo.idArticulo}>
                                             <td>{articulo.nombreArticulo}</td>
                                             <td>{articulo.cantidadArticulo}</td>
                                             <td>{articulo.precioArticulo}</td>
@@ -59,14 +67,14 @@ class ListArticulos extends Component {
                                             {/* <td>{articulo.ivaArticulo}</td> */}
                                             <td>
                                                 <div class="row">
-                                                    <div class="col-4 ">
+                                                    {/* <div class="col-4 ">
                                                     <a class="text-primary"><i class="fa fa-eye"></i> </a>
-                                                    </div>
+                                                    </div> */}
                                                     <div class="col-4">
                                                     <a class="text-success"><i class="fa fa-edit"></i> </a>
                                                     </div>
                                                     <div class="col-4 ">
-                                                    <a class="text-danger"><i class="fa fa-trash"></i> </a>
+                                                    <a class="text-danger" onClick={() => this.eliminarArticulo(articulo.idArticulo)}><i class="fa fa-trash"></i> </a>
                                                     </div>
                                                 </div>
                                                 {/* <a class="text-primary"><i class="fa fa-eye"></i> Ver</a> */}

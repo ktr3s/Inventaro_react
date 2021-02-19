@@ -6,10 +6,13 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 import HeaderInventario from './components/HeaderInventario';
 import FooterInventario from './components/FooterInventario.jsx';
 import listArticulos from './components/listArticulos';
-import Buscar from './components/Buscar';
+// import Buscar from './components/Buscar';
 import ListarBodegas from './components/listarBodegas';
 import ListarCategorias from './components/ListarCategorias';
 import CrearArticulo from './components/CrearArticulo';
+import CrearBodega from './components/CrearBodega';
+import CrearCategoria from './components/crearCategoria';
+import UpdateBodega from './components/UpdateBodega';
 /* class App extends Component {
 
   state = {
@@ -58,25 +61,28 @@ function App() {
                 </ul>
               </div>
               <div class="col-4">
-                <Buscar />
+                {/* <Buscar /> */}
               </div>
             </div>
           </div>
         </div>
         <body class=" bg-light">
-          <br/>
+          <br />
           <div class="container bg-white">
             <Switch>
               <Route path="/listar-articulos" exact component={listArticulos}></Route>
               <Route path="/listar-bodegas" exact component={ListarBodegas}></Route>
               <Route path="/listar-categorias" exact component={ListarCategorias}></Route>
               <Route path="/crear-articulo" exact component={CrearArticulo}></Route>
-             </Switch>
+              <Route path="/crear-bodega" exact component={CrearBodega}></Route>
+              <Route path="/crear-categoria" exact component={CrearCategoria}></Route>
+              <Route path="/actualizar-bodega/:id" exact component={UpdateBodega}></Route>
+            </Switch>
           </div>
-          <br/>
-        <br/>
+          <br />
+          <br />
         </body>
-        
+
         <footer>
           <FooterInventario />
         </footer>

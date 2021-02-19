@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const LISTAR_Categorias_API = "http://localhost:9000/api/listar_categorias/";
-// const CUENTAPROVEEDORES_API_POST_URL = "http://localhost:8080/api/addcuentaProveedores";
-// const CUENTAPROVEEDORES_API_GET_BYID_URL = "http://localhost:8080/api/cuentaproveedores";
+const CREARCATEGORIA_API_POST_URL = "http://localhost:9000/api/crear_categoria";
+// const CREARCATEGORIA_API_GET_BYID_URL = "http://localhost:8080/api/CREARCATEGORIA";
 
 class CategoriasService{
 
@@ -10,12 +10,12 @@ class CategoriasService{
         return axios.get(LISTAR_Categorias_API);
     }
 
-    // createCuentaProveedores(cuentaProveedores){
-    //     return axios.post(CUENTAPROVEEDORES_API_POST_URL, cuentaProveedores);
-    // }
+    createCategoria(Categoria){
+        return axios.post(CREARCATEGORIA_API_POST_URL, Categoria);
+    }
 
-    // getCuentaProveedoresById(cuentaProveedoresId){
-    //     return axios.get(CUENTAPROVEEDORES_API_GET_BYID_URL + '/' + cuentaProveedoresId);;
+    // getCREARCATEGORIAById(CREARCATEGORIAId){
+    //     return axios.get(CREARCATEGORIA_API_GET_BYID_URL + '/' + CREARCATEGORIAId);;
     // }
 
 }
