@@ -72,23 +72,25 @@ class CreateArticulo extends Component {
                                     </div> */}
                                     <div className="form-group">
                                         <label>Nombre del Articulo:</label>
-                                        <input type="text" placeholder="Nombre del Articulo" name="nombreArticulo" className="form-control"
+                                        <input type="text" placeholder="Nombre del Articulo" name="nombreArticulo" className="form-control" minlength="3"
+                                            maxlength="30" required pattern="[A-Z a-z]{1,60}"
+                                            title="Solo se permiten letras mayúsculas y minúsculas" required
                                             value={this.state.nombreArticulo} onChange={this.changeNombreArticuloHandler} />
                                     </div>
                                     <div className="form-group">
                                         <label>Cantidad:</label>
-                                        <input placeholder="Cantidad" name="cantidadArticulo" className="form-control"
+                                        <input placeholder="Cantidad" name="cantidadArticulo" className="form-control" required
                                             value={this.state.cantidadArticulo} onChange={this.changeCantidadArticuloHandler} />
                                     </div>
                                     <div className="form-group">
                                         <label>Precio:</label>
-                                        <input placeholder="Precio" name="precioArticulo" className="form-control"
-                                            value={this.state.precioArticulo} onChange={this.changePrecioArticuloHandler} />
+                                        <input placeholder="$" name="precioArticulo" className="form-control" 
+                                            required value={this.state.precioArticulo} onChange={this.changePrecioArticuloHandler} />
                                     </div>
                                     <div className="form-group">
                                         <label>Peso:</label>
-                                        <input placeholder="Peso" name="pesoArticulo" className="form-control"
-                                            value={this.state.pesoArticulo} onChange={this.changePesoArticuloHandler} />
+                                        <input placeholder="Lb" name="pesoArticulo" className="form-control" 
+                                            required value={this.state.pesoArticulo} onChange={this.changePesoArticuloHandler} />
                                     </div>
                                     <br/>
                                     <div class="container mx-auto">
